@@ -1,20 +1,25 @@
 # Functional and Non-Functional Requirements
 
+## Topics
+- [Actors](#actors)
+- [Functional requirements](#functional-requirements)
+- [Non Functional requirements](#non-functional-requirements)
+
 ## Actors
 
 The following actors interact with the web application:
 
 | Role                 | Description                                              |
 |----------------------|----------------------------------------------------------|
-| Student              | Registers as a player; eligible to be a Captain.         |
-| Graduate             | Registers as a player; eligible to be a Captain.         |
-| Professor            | Registers as a player; eligible to be a Captain.         |
-| Administrative Staff | Registers as a player; eligible to be a Captain.         |
-| Family Member        | Registers as a player; eligible to be a Captain.         |
-| Captain              | Creates and manages a team.                              |
-| Organizer            | Responsible for managing the tournament.                 |
-| Referee              | Views match information for officiating purposes.        |
-| Administrator        | Exercises full control over the system.                  |
+| Student              | Registers as a player; eligible to be a Captain          |
+| Graduate             | Registers as a player; eligible to be a Captain          |
+| Professor            | Registers as a player; eligible to be a Captain          |
+| Administrative Staff | Registers as a player; eligible to be a Captain          |
+| Family Member        | Registers as a player; eligible to be a Captain          |
+| Captain              | Creates and manages a team                               |
+| Organizer            | Responsible for managing the tournament                  |
+| Referee              | Views match information for officiating purposes         |
+| Administrator        | Exercises full control over the system                   |
 
 ## Functional Requirements
 
@@ -99,10 +104,10 @@ Prior to each match, the Captain shall be able to:
 ### Match Registration
 The Tournament Organizer is responsible for recording the following match details
 
-* **Scoreboard**: The final score of the match
-* **Goal Scorers**: Identification of the players who scored goals
-* **Yellow Cards**: Registration of players cautioned during the match
-* **Red Cards**: Registration of players sent off during the match
+* The final score of the match
+* Identification of the players who scored goals
+* Registration of players cautioned during the match
+* Registration of players sent off during the match
 
 **Requirement**: The system must provide a dedicated interface for Organizers to input and
 save these match statistics, ensuring that all data is reflected in the historical logs and
@@ -110,42 +115,57 @@ tournament standings
 
 ### Match Inquiries (Referees Only)
 Referees shall have access to a dedicated view to consult the details of their assigned matches. The system must display:
-- **Date and Time**: The scheduled kickoff for the specific match
-- **Field/Court**: The specific location within the campus or complex where the match will take place
-- **Competing Teams**: The names and details of the two teams playing the match
+- The scheduled kickoff for the specific match
+- The specific location within the campus or complex where the match will take place
+- The names and details of the two teams playing the match
 
 **Requirement**: Provide a personalized schedule for Referees to ensure they have all necessary
 logistical information for their officiating duties
 
 ### Tournament Standings
 The system must automatically calculate and update the following statistics for each participating team:
-- **Matches Played**: Total number of games completed
-- **Matches Won**: Total number of victories
-- **Matches Drawn**: Total number of ties/draws
-- **Matches Lost**: Total number of defeats
-- **Goals For**: Total number of goals scored by the team
-- **Goals Against**: Total number of goals conceded by the team
-- **Goal Difference**: The result of subtracting Goals Against from Goals For
-- **Points**: Total points accumulated based on match results
+- Total number of games completed
+- Total number of victories
+- Total number of ties/draws
+- Total number of defeats
+- Total number of goals scored by the team
+- Total number of goals conceded by the team
+- The result of subtracting Goals Against from Goals For
+- Total points accumulated based on match results
 
 **Requirement**: Implement an automated standings engine that updates in real-time as match
 results are registered, ensuring accurate rankings throughout the tournament
 
 ### Tournament Brackets and Knockout Stages
 The system must automatically generate the tournament structure, including:
-- **Initial Matchups**: Randomized pairing for the opening round of the tournament
-- **Quarter-finals**: Automatic progression and seeding of the top 8 teams
-- **Semi-finals**: Automatic progression of winning teams from the previous stage
-- **Final**: Final matchup generation to determine the tournament champion
+- Randomized pairing for the opening round of the tournament
+- Automatic progression and seeding of the top 8 teams
+- Automatic progression of winning teams from the previous stage
+- Matchup generation to determine the tournament champion
 
 **Requirement**: Implement an automated bracket engine capable of handling random seeding
 and advancing teams through the knockout phases based on match results
 
 ### Tournament Statistics and History
 The system shall provide a centralized dashboard where the following information can be consulted:
-- **Top Scorers**: A ranked list of players with the highest number of goals across the tournament
-- **Match History**: A comprehensive record of all matches played, including dates and locations
-- **Results by Team**: A detailed breakdown of performance and specific match outcomes for any selected team
+- A ranked list of players with the highest number of goals across the tournament
+- A comprehensive record of all matches played, including dates and locations
+- A detailed breakdown of performance and specific match outcomes for any selected team
 
 **Requirement**: Implement a data visualization and query module that allows users to track
 individual and collective performance throughout the competition
+
+---
+
+## Non Functional Requirements
+
+### Technological Architecture (Non-Functional Requirements)
+
+The system must adhere to the following architectural and technical constraints:
+
+- **Backend**: Developed using **Spring Boot**, implementing a layered architecture (Controllers, Adapters, Logic/Service, and Data/Persistence)
+- **API Management**: Exposure of system functionalities through a **REST API** managed by Spring Boot
+- **Frontend**: A web application built with **React** using **TypeScript** for type safety and modern state management
+- **Database**: Use of **PostgreSQL** as the relational database management system for persistent storage
+
+**Requirement**: Ensure the system is scalable and maintainable by strictly following the layered pattern and the specified tech stack
