@@ -4,6 +4,7 @@
 - [Actors](#actors)
 - [Functional requirements](#functional-requirements)
 - [Non Functional requirements](#non-functional-requirements)
+- [Help](#help)
 
 ## Actors
 
@@ -169,3 +170,11 @@ The system must adhere to the following architectural and technical constraints:
 - **Database**: Use of **PostgreSQL** as the relational database management system for persistent storage
 
 **Requirement**: Ensure the system is scalable and maintainable by strictly following the layered pattern and the specified tech stack
+
+---
+
+## Help
+
+If the `requirements.pdf` document changes, please re open ![issue #1](https://github.com/0strezz/TECHCUP/issues/1) and fix/add
+whatever is now requested.
+
