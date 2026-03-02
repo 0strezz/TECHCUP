@@ -32,3 +32,8 @@ buildNumber.properties
 # intellij specific
 # ------------------------*
 .idea
+
+# ------------------------*
+# vim specific
+# ------------------------*
+**/*.swp
