@@ -175,6 +175,6 @@ The system must adhere to the following architectural and technical constraints:
 
 ## Help
 
-If the `requirements.pdf` document changes, please re open ![issue #1](https://github.com/0strezz/TECHCUP/issues/1) and fix/add
+If the `../requirements.pdf` document changes, please re open ![issue #1](https://github.com/0strezz/TECHCUP/issues/1) and fix/add
 whatever is now requested.
 
