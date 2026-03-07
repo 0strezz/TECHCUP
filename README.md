@@ -22,18 +22,10 @@ the project is done).
 - [Juan Diego Patiño Muñoz](https://github.com/0strezz)
 
 ## Work planning 
-
 During the first two weeks, we distributed the work in the following way: 
 
 - Diego Patiño: Defintion of functional and non-functional requirements. 
-
 - Paula Valentina: Design and creation of the context and user diagrams. 
-
 - Samuel Felipe: Design and creation of Mockups. 
-
 - Tomás Olaya: Design and creation of Mockups. 
-
 - Ángela Gómez: Design and creation of the identity manual. 
-
----
-
