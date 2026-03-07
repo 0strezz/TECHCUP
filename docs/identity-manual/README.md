@@ -16,15 +16,19 @@ Also, it provides a small context by providing both the mission and vision of th
 
 ## Where to find it
 
-Right now the Identity Manual (created with Latex) is available on the following link. 
+The Identity Manual (created with Latex) is available on the following link. 
 
 [Identity Manual](https://www.overleaf.com/read/ngqxqtwrmzgj)
 
-However, the final version will be available on PDF format on this same folder. 
+However, the PDF version is available on PDF format in this same folder. 
 
 ## Extra Notes
 
-Even though an identity manual must show explicitely the Mockups, we decided to just add pictures of some sections to keep a short, practical identity manual. The complete Mockup is available in the manual via link. 
+Even though an identity manual must show explicitely the Mockups, we decided to just add the link to have a practical identity manual.
+
+The complete Mockup is available in the following link:
+
+[Figma Mockup](https://www.figma.com/design/7eu04CkoNXrM4lAG6kMyYs/TECH-FUTBOL?node-id=6-3&t=jllVZGRIrr1970Lt-1)
 
 
 ---
