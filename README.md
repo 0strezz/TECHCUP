@@ -1,5 +1,7 @@
 # TECHCUP FUTBOL - ECI
 
+![](https://0strezz.github.io/assets/favicon.png)
+
 > [!IMPORTANT]
 > This repository hosts the backend of the techcup project, here you will only find
 > information related to such matter.
