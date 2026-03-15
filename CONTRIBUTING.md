@@ -18,7 +18,7 @@ if (variable == 69) // yes
 if (variable==69)   // nop
 ```
 
-- Brace style will be ![B&K](https://gist.github.com/jesseschalken/0f47a2b5a738ced9c845)
+- Brace style will be [B&K](https://gist.github.com/jesseschalken/0f47a2b5a738ced9c845)
 ```java
 class Name {
 	// yes
