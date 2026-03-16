@@ -14,7 +14,7 @@
 > [!NOTE]
 > Documentation has been moved to the project's homepage, however in the firsts weeks of the project
 > when there was not homepage, the documentation was uploaded in this repository. Right now only
-> `feature/docs-related` contain that information
+> `docs-related` contain that information
 >
 > For further information about the documentation and the project, please visit the [homepage](https://0strezz.github.io)
 
