@@ -4,4 +4,4 @@
 > Please do not delete this branch, as it serves as a historical reference for professors and contributors to understand
 > how documentation was structured in the early stages of the project.
 >
-> Do not merge this branch into any other branch. Thank you!
+> Do not merge this branch into any other branch. Thank you! :)
