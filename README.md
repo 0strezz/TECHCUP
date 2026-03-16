@@ -18,3 +18,13 @@
 >
 > For further information about the documentation and the project, please visit the [homepage](https://0strezz.github.io)
 
+
+---
+
+**UPDATES FROM LABORATORY 6**
+
+In the previous lab, we implemented some basic classes and tests in order to use JUnit and understand better the concept of unit tests. This coding section is available in the `tech_cup` folder, where the `main` folder contains the suggested folders and the test on contains the test classes. In addition, the initial Class Diagram is available in the folder called *Astah - Class Diagram*, in case you want to take a look. 
+
+In order to keep the suggested structured for the Laboratory 7, the classes done previously are inside the `main`, in a folder called `lab6`. This folder has several packages for the different classes, following the structure shown in the class diagram. 
+
+
