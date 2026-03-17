@@ -56,7 +56,7 @@ Some annotations used are:
 
 **Example:**
 
-```{java}
+```java
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -89,7 +89,7 @@ They typically use the annotation: `@Service`
 
 **Example:**
 
-```{java}
+```java
 @Service
 public class UserService {
 
@@ -116,7 +116,7 @@ They usually extend interfaces such as:
 
 **Example**
 
-```{java}
+```java
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
@@ -155,7 +155,7 @@ Entities usually use annotations such as:
 
 **Example**
 
-```{java}
+```java
 @Entity
 public class User {
 
@@ -184,7 +184,7 @@ A DTO typically contains only the data required for a specific operation.
 
 **Example**
 
-```{java}
+```java
 public class UserDTO {
     private String name;
     private String email;
