@@ -119,7 +119,7 @@ They usually extend interfaces such as:
 ```java
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-
+	// something
 }
 ```
 
@@ -208,7 +208,7 @@ It is often used together with annotations such as:
 
 **Example**
 
-```
+```java
 public class UserNotFoundException extends RuntimeException {
     public UserNotFoundException(String message){
         super(message);
