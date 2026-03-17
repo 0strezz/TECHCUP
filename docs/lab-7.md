@@ -1,5 +1,10 @@
 # Laboratory 7
 
+> [!NOTE]
+> Since this lab depends in lab-6 somehow, you may notice a few changes in the structure/classes/UMLs
+> of this version, this is due to the changes made since in the lab-6, we were working on a early stage
+> of the project; now, in this version, we have the final result
+
 **UPDATES FROM LABORATORY 6**
 
 In the previous lab, we implemented some basic classes and tests in order to use JUnit
