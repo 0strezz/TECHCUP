@@ -1,6 +1,6 @@
 # TECHCUP FUTBOL - ECI
 
-![](https://0strezz.github.io/assets/favicon.png)
+![icon](https://0strezz.github.io/assets/favicon.png)
 
 > [!IMPORTANT]
 > This repository hosts the backend of the techcup project, here you will only find
@@ -23,10 +23,15 @@
 
 **UPDATES FROM LABORATORY 6**
 
-In the previous lab, we implemented some basic classes and tests in order to use JUnit and understand better the concept of unit tests. This coding section is available in the `tech_cup` folder, where the `main` folder contains the suggested folders and the test on contains the test classes. In addition, the initial Class Diagram is available in the folder called *Astah - Class Diagram*, in case you want to take a look. 
+In the previous lab, we implemented some basic classes and tests in order to use JUnit
+and understand better the concept of unit tests. This coding section is available in
+the `tech_cup` folder, where the `main` folder contains the suggested folders and the
+test on contains the test classes. In addition, the initial Class Diagram is available
+in the folder called *Astah - Class Diagram*, in case you want to take a look. 
 
-In order to keep the suggested structured for the Laboratory 7, the classes done previously are inside the `main`, in a folder called `lab6`. This folder has several packages for the different classes, following the structure shown in the class diagram. 
-
+In order to keep the suggested structured for the Laboratory 7, the classes done previously
+are inside the `main`, in a folder called `lab6`. This folder has several packages for the
+different classes, following the structure shown in the class diagram. 
 
 ---
 
@@ -38,7 +43,7 @@ The Controller package contains the classes used for handling HTTP requests from
 
 The controllers do the following: 
 
-- Drfine REST endpoints like users, products, etc.
+- Define REST endpoints like users, products, etc.
 - Receive request data (GET, POST, PUT, DELETE).
 - Call the Service layer to execute business logic. 
 - Return an HTTP response to the client (usually JSON).
@@ -51,17 +56,17 @@ Some annotations used are:
 
 **Example:**
 
+```{java}
 @RestController
 @RequestMapping("/users")
 public class UserController {
-
     private final UserService userService;
-
     @GetMapping
     public List<User> getUsers(){
         return userService.getUsers();
     }
 }
+```
 
 ### 2. What is the purpose of the Service package in a Spring Boot structure?
 
@@ -80,11 +85,11 @@ Services:
 - Interact with Repositories
 - Return results to the Controller
 
-They typically use the annotation:
-`@Service`
+They typically use the annotation: `@Service`
 
 **Example:**
 
+```{java}
 @Service
 public class UserService {
 
@@ -92,6 +97,7 @@ public class UserService {
         // business logic
     }
 }
+```
 
 ### 3. What is the purpose of the Repository package in a Spring Boot structure?
 
@@ -100,23 +106,22 @@ The Repository package is responsible for interacting with the database.
 Repositories:
 
 - Perform CRUD operations
-
 - Communicate with the database
-
 - Allow saving, retrieving, updating, and deleting data
 
 They usually extend interfaces such as:
 
 - `JpaRepository`
-
 - `CrudRepository`
 
 **Example**
 
+```{java}
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
 }
+```
 
 ### 4. What is the purpose of the Controller package in the Spring Boot structure?
 
@@ -150,6 +155,7 @@ Entities usually use annotations such as:
 
 **Example**
 
+```{java}
 @Entity
 public class User {
 
@@ -159,6 +165,7 @@ public class User {
 
     private String name;
 }
+```
 
 ### 6. What is the purpose of the DTO package in a Spring Boot structure?
 
@@ -177,12 +184,12 @@ A DTO typically contains only the data required for a specific operation.
 
 **Example**
 
+```{java}
 public class UserDTO {
-
     private String name;
     private String email;
 }
-
+```
 
 ### 7. What is the purpose of the Exception package in a Spring Boot structure?
 
@@ -201,23 +208,19 @@ It is often used together with annotations such as:
 
 **Example**
 
+```
 public class UserNotFoundException extends RuntimeException {
-
     public UserNotFoundException(String message){
         super(message);
     }
 }
+```
 
 This allows developers to manage application errors in a more organized and readable way.
 
 ### REFRENCES (APA)
 
-
-Richardson, C. (2018). Microservices patterns: With examples in Java. Manning Publications.
-
-Walls, C. (2022). Spring Boot in action (2nd ed.). Manning Publications.
-
-Spring. (2024). Spring Boot reference documentation. https://docs.spring.io/spring-boot/docs/current/reference/html/
-
-Baeldung. (2024). Spring Boot architecture. https://www.baeldung.com/spring-boot-architecture
-
+- Richardson, C. (2018). Microservices patterns: With examples in Java. Manning Publications.
+- Walls, C. (2022). Spring Boot in action (2nd ed.). Manning Publications.
+- [Spring. (2024). Spring Boot reference documentation.](https://docs.spring.io/spring-boot/docs/current/reference/html/)
+- [Baeldung. (2024). Spring Boot architecture.](https://www.baeldung.com/spring-boot-architecture)
