@@ -208,3 +208,8 @@ This allows developers to manage application errors in a more organized and read
 - Walls, C. (2022). Spring Boot in action (2nd ed.). Manning Publications.
 - [Spring. (2024). Spring Boot reference documentation.](https://docs.spring.io/spring-boot/docs/current/reference/html/)
 - [Baeldung. (2024). Spring Boot architecture.](https://www.baeldung.com/spring-boot-architecture)
+
+---
+
+## Part 2
+![tests](./images/lab-7-tests.png)
