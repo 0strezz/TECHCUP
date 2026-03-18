@@ -1,4 +1,5 @@
 package main.java.edu.eci.dosw.tech_cup.dto;
+
 public class LoginRequestDto {
     private String email;
     private Strin password;
