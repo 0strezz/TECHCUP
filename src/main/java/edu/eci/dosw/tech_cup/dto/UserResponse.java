@@ -7,16 +7,18 @@ public class UserResponse {
     private String name;
     private String email;
     private String role;
+    private String message;
 
-    public UserResponse() {
+    public UserResponseDto() {
 
     }
 
-    public UserResponse(UUID id, String name, String email, String role) {
+    public UserResponseDto(UUID id, String name, String email, String role, String message) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.role = role;
+        this.message = message;
     }
 
     public UUID getId() {
@@ -31,6 +33,9 @@ public class UserResponse {
     public String getRole() {
         return this.role;
     }
+    public String getMessage() {
+        return this.message;
+    }
 
     public void setId(UUID id) {
         this.id = id;
@@ -43,5 +48,8 @@ public class UserResponse {
     }
     public void setRole(String role) {
         this.role = role;
+    }
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
