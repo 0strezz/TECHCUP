@@ -1,15 +1,15 @@
 package main.java.edu.eci.dosw.tech_cup.dto;
 
 public class ChangeUserRoleRequestDto {
-    private String role;
+    private String newRole;
     private String performedBy;
 
     public ChangeUserRoleRequestDto() {
 
     }
 
-    public ChangeUserRoleRequestDto(String role, String performedBy) {
-        this.role = role;
+    public ChangeUserRoleRequestDto(String newRole, String performedBy) {
+        this.newRole = newRole;
         this.performedBy = performedBy;
     }
 

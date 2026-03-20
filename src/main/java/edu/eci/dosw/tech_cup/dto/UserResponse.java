@@ -7,17 +7,19 @@ public class UserResponse {
     private String name;
     private String email;
     private String role;
+    private boolean active;
     private String message;
 
     public UserResponseDto() {
 
     }
 
-    public UserResponseDto(UUID id, String name, String email, String role, String message) {
+    public UserResponseDto(UUID id, String name, String email, String role, boolean active, String message) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.role = role;
+        this.active = active;
         this.message = message;
     }
 
@@ -33,6 +35,10 @@ public class UserResponse {
     public String getRole() {
         return this.role;
     }
+    public boolean getActive() {
+        return this.active;
+    }
+
     public String getMessage() {
         return this.message;
     }
@@ -48,6 +54,9 @@ public class UserResponse {
     }
     public void setRole(String role) {
         this.role = role;
+    }
+    public void setActive(boolean active){
+        this.active= active;
     }
     public void setMessage(String message) {
         this.message = message;
