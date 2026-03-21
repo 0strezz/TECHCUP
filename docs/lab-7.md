@@ -218,9 +218,9 @@ This allows developers to manage application errors in a more organized and read
 In this laboratory, a REST API was implemented for the first cycle, including the development of controllers, services, and business logic for tournament management. Additionally, Swagger (OpenAPI) was integrated to provide interactive API documentation, allowing visualization and testing of endpoints. The application was successfully compiled and executed, and the API was verified through the local server.
 
 ### Application Running (Localhost)
-![P1](docs/images/lab-7-p1.png)
-![P2](docs/images/lab-7-p2.png)
-![P3](docs/images/lab-7-p3.png)
+![P1](./images/lab-7-p1.png)
+![P2](./images/lab-7-p2.png)
+![P3](./images/lab-7-p3.png)
 
 ### Build and Compilation
-![Swagger](docs/images/lab-7-swagger.png)
+![Swagger](./images/lab-7-swagger.png)
