@@ -1,5 +1,7 @@
 package edu.eci.dosw.tech_cup.model;
 
+import edu.eci.dosw.tech_cup.model.enums.TournamentStatus;
+
 public class Tournament {
 
     private Long id;
