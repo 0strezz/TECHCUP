@@ -17,3 +17,16 @@
 > `docs-related` contain that information
 >
 > For further information about the documentation and the project, please visit the [homepage](https://0strezz.github.io)
+
+
+## 📸 Results and Evidence
+
+In this laboratory, a REST API was implemented for the first cycle, including the development of controllers, services, and business logic for tournament management. Additionally, Swagger (OpenAPI) was integrated to provide interactive API documentation, allowing visualization and testing of endpoints. The application was successfully compiled and executed, and the API was verified through the local server.
+
+### Application Running (Localhost)
+![P1](docs/images/P1.png)
+![P2](docs/images/P2.png)
+![P3](docs/images/P3.png)
+
+### Build and Compilation
+![Swagger](docs/images/Swagger.png)
