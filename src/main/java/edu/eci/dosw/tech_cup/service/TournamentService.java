@@ -1,9 +1,9 @@
-package main.java.edu.eci.dosw.tech_cup.service;
+package edu.eci.dosw.tech_cup.service;
 
 import edu.eci.dosw.tech_cup.dto.CreateTournamentRequestDto;
 import edu.eci.dosw.tech_cup.dto.TournamentResponseDto;
 import edu.eci.dosw.tech_cup.dto.UpdateTournamentRequestDto;
-import edu.eci.dosw.tech_cup.model.TournamentStatus;
+import edu.eci.dosw.tech_cup.model.enums.TournamentStatus;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -65,7 +65,7 @@ public class TournamentService {
             return error("Tournament not found");
         }
 
-        if (tournament.getStatus() == TournamentStatus.FINALIZADO) {
+        if (tournament.getStatus() == TournamentStatus.FINISHED) {
             return error("Cannot update a finished tournament");
         }
 
@@ -126,11 +126,11 @@ public class TournamentService {
             return error("Tournament not found");
         }
 
-        if (tournament.getStatus() != TournamentStatus.EN_PROGRESO) {
+        if (tournament.getStatus() != TournamentStatus.IN_PROGRESS) {
             return error("Tournament cannot be finished");
         }
 
-        tournament.setStatus(TournamentStatus.FINALIZADO);
+        tournament.setStatus(TournamentStatus.FINISHED);
         tournament.setMessage("Tournament finished");
 
         return tournament;

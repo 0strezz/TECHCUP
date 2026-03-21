@@ -1,4 +1,4 @@
-package test.service;
+package edu.eci.dosw.tech_cup.service;
 
 import edu.eci.dosw.tech_cup.model.user.*;
 import org.junit.jupiter.api.*;

@@ -1,9 +1,9 @@
-package main.java.edu.eci.dosw.tech_cup.service;
+package edu.eci.dosw.tech_cup.service;
 
 import edu.eci.dosw.tech_cup.dto.CreateUserRequestDto;
 import edu.eci.dosw.tech_cup.dto.UpdateUserRequestDto;
 import edu.eci.dosw.tech_cup.dto.UserResponseDto;
-import main.java.edu.eci.dosw.tech_cup.dto.ChangeUserRoleRequestDto;
+import edu.eci.dosw.tech_cup.dto.ChangeUserRoleRequestDto;
 
 import org.springframework.stereotype.Service;
 

@@ -1,8 +1,8 @@
-package main.java.edu.eci.dosw.tech_cup.dto;
+package edu.eci.dosw.tech_cup.dto;
 
 public class CreateUserRequestDto {
-    private Strin name;
-    private Strin email;
+    private String name;
+    private String email;
     private String password;
 
     public CreateUserRequestDto() {
@@ -20,10 +20,10 @@ public class CreateUserRequestDto {
     }
 
     public String getEmail() {
-        return this.mail;
+        return this.email;
     }
 
-    public String password() {
+    public String getPassword() {
         return this.password;
     }
 

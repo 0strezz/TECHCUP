@@ -1,7 +1,10 @@
-package main.java.edu.eci.dosw.tech_cup.service;
+package edu.eci.dosw.tech_cup.service;
 
 import edu.eci.dosw.tech_cup.dto.LoginRequestDto;
 import edu.eci.dosw.tech_cup.dto.LoginResponseDto;
+
+import java.util.UUID;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -29,4 +32,25 @@ public class AuthService {
             "Invalid email or password"
         );
     }
+
+    public LoginResponseDto getMe(String token) {
+        // In a real application, you would validate the token and fetch user details from the database
+        if (token != null && !token.isEmpty()) {
+            return new LoginResponseDto(
+                UUID.randomUUID(),
+                "Dummy User",
+                "dummy@example.com",
+                "PLAYER",
+                "User details fetched successfully"
+            );
+        }
+        return new LoginResponseDto(
+            null,
+            null,
+            null,
+            null,
+            "Invalid token"
+        );
+    }
+
 }
