@@ -1,4 +1,4 @@
-package main.java.edu.eci.dosw.tech_cup.dto;
+package edu.eci.dosw.tech_cup.dto;
 
 public class UpdateUserRequestDto {
     private String name;

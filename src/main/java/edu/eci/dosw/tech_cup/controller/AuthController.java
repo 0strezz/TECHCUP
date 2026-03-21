@@ -1,7 +1,10 @@
-package main.java.edu.eci.dosw.tech_cup.controller;
+package edu.eci.dosw.tech_cup.controller;
 
-import org.springframework.http.ResponseEntity;
-
+import edu.eci.dosw.tech_cup.service.AuthService;
+import edu.eci.dosw.tech_cup.dto.LoginRequestDto;
+import edu.eci.dosw.tech_cup.dto.LoginResponseDto;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.http.*;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -18,5 +21,13 @@ public class AuthController {
 
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
+
+    @PostMapping("/me")
+    public ResponseEntity<LoginResponseDto> getMe(@RequestHeader("Authorization") String token) {
+        LoginResponseDto response = authService.getMe(token);
+
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+
 
 }

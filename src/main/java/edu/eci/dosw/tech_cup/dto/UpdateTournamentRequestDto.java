@@ -1,18 +1,18 @@
-package main.java.edu.eci.dosw.tech_cup.dto;
+package edu.eci.dosw.tech_cup.dto;
 
 import java.time.LocalDate;
 
-public class UpdateTournamentResquestDto {
+public class UpdateTournamentRequestDto {
     private String name;
     private LocalDate startDate;
     private LocalDate endDate;
     private int numberOfTeams;
 
-    public CreateTournamentRequestDto() {
+    public UpdateTournamentRequestDto() {
 
     }
 
-    public CreateTournamentRequestDto(String name, LocalDate startDate, LocalDate endDate, int numberOfTeams) {
+    public void UpdateTournamentRequestDto(String name, LocalDate startDate, LocalDate endDate, int numberOfTeams) {
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -22,10 +22,10 @@ public class UpdateTournamentResquestDto {
     public String getName() {
         return this.name;
     }
-    public LocalDate startDate() {
+    public LocalDate getStartDate() {
         return this.startDate;
     }
-    public LocalDate endDate() {
+    public LocalDate getEndDate() {
         return this.endDate;
     }
     public int getNumberOfTeams() {

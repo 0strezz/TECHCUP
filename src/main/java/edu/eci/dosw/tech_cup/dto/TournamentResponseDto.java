@@ -1,4 +1,9 @@
-package main.java.edu.eci.dosw.tech_cup.dto;
+package edu.eci.dosw.tech_cup.dto;
+
+import java.time.LocalDate;
+import java.util.UUID;
+
+import edu.eci.dosw.tech_cup.model.enums.TournamentStatus;
 
 public class TournamentResponseDto {
     private UUID id;

@@ -1,4 +1,4 @@
-package main.java.edu.eci.dosw.tech_cup.dto;
+package edu.eci.dosw.tech_cup.dto;
 
 import java.time.LocalDate;
 
@@ -22,10 +22,10 @@ public class CreateTournamentRequestDto {
     public String getName() {
         return this.name;
     }
-    public LocalDate startDate() {
+    public LocalDate getStartDate() {
         return this.startDate;
     }
-    public LocalDate endDate() {
+    public LocalDate getEndDate() {
         return this.endDate;
     }
     public int getNumberOfTeams() {

@@ -1,4 +1,4 @@
-package main.java.edu.eci.dosw.tech_cup.controller;
+package edu.eci.dosw.tech_cup.controller;
 
 import edu.eci.dosw.tech_cup.dto.CreateTournamentRequestDto;
 import edu.eci.dosw.tech_cup.dto.TournamentResponseDto;

@@ -1,8 +1,8 @@
-package main.java.edu.eci.dosw.tech_cup.dto;
+package edu.eci.dosw.tech_cup.dto;
 
 import java.util.UUID;
 
-public class UserResponse {
+public class UserResponseDto {
     private UUID id;
     private String name;
     private String email;

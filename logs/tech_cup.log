@@ -1,0 +1,21 @@
+2026-03-20T23:39:20.646-05:00  INFO 348 --- [main] edu.eci.dosw.tech_cup.ApplicationTests   : Starting ApplicationTests using Java 25.0.1 with PID 348 (started by samue in C:\Users\samue\Documents\programacion\Universidad\Dosw\proyecto_tech\TCBend)
+2026-03-20T23:39:20.654-05:00  INFO 348 --- [main] edu.eci.dosw.tech_cup.ApplicationTests   : No active profile set, falling back to 1 default profile: "default"
+2026-03-20T23:39:25.967-05:00  INFO 348 --- [main] e.e.d.t.service.TournamentService        : Initializing TournamentService with dummy tournaments
+2026-03-20T23:39:26.081-05:00  INFO 348 --- [main] e.eci.dosw.tech_cup.service.UserService  : Initializing UserService with dummy users
+2026-03-20T23:39:29.126-05:00  INFO 348 --- [main] edu.eci.dosw.tech_cup.ApplicationTests   : Started ApplicationTests in 10.38 seconds (process running for 13.865)
+2026-03-20T23:39:29.142-05:00  WARN 348 --- [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-20T23:39:29.142-05:00  WARN 348 --- [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-20T23:41:41.253-05:00  INFO 4844 --- [main] edu.eci.dosw.tech_cup.Application        : Starting Application using Java 25.0.1 with PID 4844 (C:\Users\samue\Documents\programacion\Universidad\Dosw\proyecto_tech\TCBend\target\classes started by samue in C:\Users\samue\Documents\programacion\Universidad\Dosw\proyecto_tech\TCBend)
+2026-03-20T23:41:41.271-05:00  INFO 4844 --- [main] edu.eci.dosw.tech_cup.Application        : No active profile set, falling back to 1 default profile: "default"
+2026-03-20T23:41:42.753-05:00  INFO 4844 --- [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-03-20T23:41:42.771-05:00  INFO 4844 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-20T23:41:42.772-05:00  INFO 4844 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-20T23:41:42.849-05:00  INFO 4844 --- [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1439 ms
+2026-03-20T23:41:42.948-05:00  INFO 4844 --- [main] e.e.d.t.service.TournamentService        : Initializing TournamentService with dummy tournaments
+2026-03-20T23:41:42.954-05:00  INFO 4844 --- [main] e.eci.dosw.tech_cup.service.UserService  : Initializing UserService with dummy users
+2026-03-20T23:41:43.554-05:00  INFO 4844 --- [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-03-20T23:41:43.564-05:00  INFO 4844 --- [main] edu.eci.dosw.tech_cup.Application        : Started Application in 3.169 seconds (process running for 3.76)
+2026-03-20T23:41:43.568-05:00  WARN 4844 --- [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-20T23:41:43.569-05:00  WARN 4844 --- [main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-20T23:41:47.730-05:00  INFO 4844 --- [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-20T23:41:47.788-05:00  INFO 4844 --- [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
