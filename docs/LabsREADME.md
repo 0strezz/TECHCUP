@@ -227,13 +227,13 @@ In this laboratory, a REST API was implemented for the first cycle, including th
 
 ---
 
-# Laboratorio 8
+# Laboratory 8
 
-## Parte 1. Seguridad con Spring Boot Security
+## Part 1. Seguridad con Spring Boot Security
 
 ### 1. Postman
 
-## Prueba endpoint Users
+## Users endpoint test
 
 The backend was successfully executed and the `/api/users` endpoint was verified using Postman.
 
