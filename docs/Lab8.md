@@ -28,9 +28,8 @@ Custom credentials were then configured in `application.properties` using `sprin
 #### 401 Unauthorized — endpoint protected by Spring Security (no credentials provided)
 ![Spring Security Default Auth](./images/Postman401.png)
 
-
 #### Request with default credentials (user + generated password) — 200 OK
-![Spring Security Basic Auth Result](./images/Lab-8-Postman2.png)
+![Spring Security Basic Auth Result](./images/Postman2.png)
 
 #### Request with custom credentials — 200 OK
-![Spring Security Custom Credentials](./images/Lab-8-PostmanUsersSecurity.png)
+![Spring Security Custom Credentials](./images/PostmanUsersSecurity.png)
