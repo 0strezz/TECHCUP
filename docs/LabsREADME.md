@@ -224,3 +224,22 @@ In this laboratory, a REST API was implemented for the first cycle, including th
 
 ### Build and Compilation
 ![Swagger](./images/lab-7-swagger.png)
+
+---
+
+# Laboratorio 8
+
+## Parte 1. Seguridad con Spring Boot Security
+
+### 1. Postman
+
+## Prueba endpoint Users
+
+Se ejecutó el backend correctamente y se verificó el endpoint `/api/users` mediante Postman.
+
+La aplicación respondió con código `200 OK` y retornó un listado de usuarios en formato JSON.
+
+Para la ejecución del proyecto se configuraron variables de entorno en un archivo `.env` local para la conexión con PostgreSQL.
+
+![Postman][./images/Lab-8-Postman.png]
+
