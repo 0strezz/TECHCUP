@@ -235,11 +235,11 @@ In this laboratory, a REST API was implemented for the first cycle, including th
 
 ## Prueba endpoint Users
 
-Se ejecutó el backend correctamente y se verificó el endpoint `/api/users` mediante Postman.
+The backend was successfully executed and the `/api/users` endpoint was verified using Postman.
 
-La aplicación respondió con código `200 OK` y retornó un listado de usuarios en formato JSON.
+The application responded with a `200 OK` status code and returned a list of users in JSON format.
 
-Para la ejecución del proyecto se configuraron variables de entorno en un archivo `.env` local para la conexión con PostgreSQL.
+For the project execution, environment variables were configured in a local `.env` file for the PostgreSQL connection.
 
-![Postman][./images/Lab-8-Postman.png]
+![Postman](./images/Lab-8-Postman.png)
 
