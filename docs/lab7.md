@@ -224,3 +224,4 @@ In this laboratory, a REST API was implemented for the first cycle, including th
 
 ### Build and Compilation
 ![Swagger](./images/lab-7-swagger.png)
+
