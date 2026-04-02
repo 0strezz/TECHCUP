@@ -1,160 +1,142 @@
 package edu.eci.dosw.tech_cup.service;
 
+import edu.eci.dosw.tech_cup.dto.ChangeUserRoleRequestDto;
 import edu.eci.dosw.tech_cup.dto.CreateUserRequestDto;
 import edu.eci.dosw.tech_cup.dto.UpdateUserRequestDto;
 import edu.eci.dosw.tech_cup.dto.UserResponseDto;
-import edu.eci.dosw.tech_cup.dto.ChangeUserRoleRequestDto;
-
+import edu.eci.dosw.tech_cup.entity.user.UserEntity;
+import edu.eci.dosw.tech_cup.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
     private static final Logger log = LoggerFactory.getLogger(UserService.class);
 
-    private final List<UserResponseDto> users;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserService() {
-        this.users = new ArrayList<>();
-        log.info("Initializing UserService with dummy users");
-
-        users.add(new UserResponseDto(
-                UUID.randomUUID(),
-                "Admin User",
-                "admin@techcup.com",
-                "ADMINISTRATOR",
-                true,
-                "Dummy admin user"
-        ));
-
-        users.add(new UserResponseDto(
-                UUID.randomUUID(),
-                "Dummy Player",
-                "player@techcup.com",
-                "PLAYER",
-                true,
-                "Dummy player user"
-        ));
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public UserResponseDto createUser(CreateUserRequestDto request) {
         log.info("Creating user with email={}", request.getEmail());
-        UserResponseDto newUser = new UserResponseDto(
-            UUID.randomUUID(),
-            request.getName(),
-            request.getEmail(),
-            "PLAYER", //default role
-            true,
-            "User created successfully"
+
+        UserEntity entity = new UserEntity(
+                request.getName(),
+                request.getEmail(),
+            passwordEncoder.encode(request.getPassword()),
+                "PLAYER",
+                true,
+                LocalDateTime.now()
         );
 
-        users.add(newUser);
-        log.debug("User created with id={}", newUser.getId());
-        return newUser;
+        UserEntity saved = userRepository.save(entity);
+        log.debug("User created with id={}", saved.getId());
+        return toDto(saved, "User created successfully");
     }
 
     public List<UserResponseDto> getAllUsers() {
-        log.debug("Fetching all users. count={}", users.size());
-        return users;
+        log.debug("Fetching all users");
+        return userRepository.findAll()
+                .stream()
+                .map(u -> toDto(u, null))
+                .collect(Collectors.toList());
     }
 
     public UserResponseDto getUserById(UUID id) {
         log.debug("Searching user by id={}", id);
-        for (UserResponseDto user : users) {
-            if (user.getId().equals(id)) {
-                log.debug("User found for id={}", id);
-                return user;
-            }
+        Optional<UserEntity> opt = userRepository.findById(id);
+        if (opt.isEmpty()) {
+            log.debug("User not found for id={}", id);
+            return null;
         }
-        log.debug("User not found for id={}", id);
-        return null;
+        return toDto(opt.get(), null);
     }
 
     public UserResponseDto updateUser(UUID id, UpdateUserRequestDto request) {
         log.info("Updating user id={}", id);
-        for (UserResponseDto user : users) {
-            if (user.getId().equals(id)) {
-                user.setName(request.getName());
-                user.setEmail(request.getEmail());
-                user.setMessage("User updated successfully");
-                log.debug("User updated id={}", id);
-                return user;
-            }
+        Optional<UserEntity> opt = userRepository.findById(id);
+        if (opt.isEmpty()) {
+            log.debug("Update failed. user not found id={}", id);
+            return null;
         }
-        log.debug("Update failed. user not found id={}", id);
-        return null;
+
+        UserEntity entity = opt.get();
+        entity.setName(request.getName());
+        entity.setEmail(request.getEmail());
+        userRepository.save(entity);
+        log.debug("User updated id={}", id);
+        return toDto(entity, "User updated successfully");
     }
 
     public UserResponseDto inactivateUser(UUID id) {
         log.info("Inactivating user id={}", id);
-        for (UserResponseDto user : users) {
-            if (user.getId().equals(id)) {
-                user.setActive(false);
-                user.setMessage("User inactivated successfully");
-                log.debug("User inactivated id={}", id);
-                return user;
-            }
+        Optional<UserEntity> opt = userRepository.findById(id);
+        if (opt.isEmpty()) {
+            log.debug("Inactivation failed. user not found id={}", id);
+            return null;
         }
-        log.debug("Inactivation failed. user not found id={}", id);
-        return null;
+
+        UserEntity entity = opt.get();
+        entity.setActive(false);
+        userRepository.save(entity);
+        log.debug("User inactivated id={}", id);
+        return toDto(entity, "User inactivated successfully");
     }
 
     public UserResponseDto changeUserRole(UUID id, ChangeUserRoleRequestDto request) {
         log.info("Changing role for targetUserId={} by actorEmail={}", id, request.getPerformedBy());
-        UserResponseDto actingUser = null;
 
-        for (UserResponseDto user : users) {
-            if (user.getEmail().equals(request.getPerformedBy())) {
-                actingUser = user;
-                break;
-            }
-        }
-
-        if (actingUser == null) {
+        Optional<UserEntity> actorOpt = userRepository.findByEmail(request.getPerformedBy());
+        if (actorOpt.isEmpty()) {
             log.debug("Role change denied. acting user does not exist for email={}", request.getPerformedBy());
-            return new UserResponseDto(
-                null,
-                null,
-                null,
-                null,
-                false,
-                "The user performing the action does not exist"
-            );
+            return errorUser("The user performing the action does not exist");
         }
 
+        UserEntity actingUser = actorOpt.get();
         if (!"ADMINISTRATOR".equals(actingUser.getRole())) {
             log.debug("Role change denied. actor role is {}", actingUser.getRole());
-            return new UserResponseDto(
-                null,
-                null,
-                null,
-                null,
-                false,
-                "Only an administrator can assign a different role"
-            );
+            return errorUser("Only an administrator can assign a different role");
         }
 
-        UserResponseDto targetUser = getUserById(id);
-        if (targetUser == null) {
+        Optional<UserEntity> targetOpt = userRepository.findById(id);
+        if (targetOpt.isEmpty()) {
             log.debug("Role change failed. target user not found id={}", id);
-            return new UserResponseDto(
-                null,
-                null,
-                null,
-                null,
-                false,
-                "Target user not found"
-            );
+            return errorUser("Target user not found");
         }
-        targetUser.setRole(request.getNewRole());
-        targetUser.setMessage("User role updated successfully");
+
+        UserEntity target = targetOpt.get();
+        target.setRole(request.getNewRole());
+        userRepository.save(target);
         log.info("Role changed successfully for user id={} to role={}", id, request.getNewRole());
-        return targetUser;
+        return toDto(target, "User role updated successfully");
     }
 
+    // --- Helpers ---
+
+    private UserResponseDto toDto(UserEntity entity, String message) {
+        return new UserResponseDto(
+                entity.getId(),
+                entity.getName(),
+                entity.getEmail(),
+                entity.getRole(),
+                entity.isActive(),
+                message
+        );
+    }
+
+    private UserResponseDto errorUser(String message) {
+        return new UserResponseDto(null, null, null, null, false, message);
+    }
 }
