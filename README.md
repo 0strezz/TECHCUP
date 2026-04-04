@@ -17,3 +17,90 @@
 > `docs-related` contain that information
 >
 > For further information about the documentation and the project, please visit the [homepage](https://0strezz.github.io)
+
+## Project Info
+
+| Field       | Value                    |
+|-------------|--------------------------|
+| Group ID    | `edu.eci.dosw`           |
+| Artifact ID | `tech_cup`               |
+| Version     | `0.0.1-SNAPSHOT`         |
+| Java        | 17                       |
+| Spring Boot | 3.4.3                    |
+
+---
+
+## Runtime Dependencies
+
+### Spring Boot
+
+| Artifact                              | Version (managed) | Description                                      |
+|---------------------------------------|-------------------|--------------------------------------------------|
+| `spring-boot-starter`                 | 3.4.3             | Core Spring Boot starter (auto-configuration, logging, YAML) |
+| `spring-boot-starter-web`             | 3.4.3             | REST API support via Spring MVC + embedded Tomcat |
+| `spring-boot-starter-security`        | 3.4.3             | Authentication and authorization (Spring Security) |
+| `spring-boot-starter-data-jpa`        | 3.4.3             | ORM and database access via Hibernate + Spring Data JPA |
+
+### API Documentation
+
+| Artifact                                    | Version | Description                          |
+|---------------------------------------------|---------|--------------------------------------|
+| `springdoc-openapi-starter-webmvc-ui`       | 2.5.0   | OpenAPI 3 / Swagger UI auto-generation for Spring MVC |
+
+### Database
+
+| Artifact      | Version (managed) | Scope   | Description                        |
+|---------------|-------------------|---------|------------------------------------|
+| `postgresql`  | 3.4.3             | runtime | PostgreSQL JDBC driver             |
+
+### JWT (JSON Web Tokens)
+
+| Artifact         | Version | Scope   | Description                              |
+|------------------|---------|---------|------------------------------------------|
+| `jjwt-api`       | 0.12.6  | compile | JJWT public API for creating/parsing JWTs |
+| `jjwt-impl`      | 0.12.6  | runtime | JJWT implementation (runtime only)       |
+| `jjwt-jackson`   | 0.12.6  | runtime | Jackson-based JSON serialization for JJWT |
+
+### Utilities
+
+| Artifact        | Version | Scope    | Description                                    |
+|-----------------|---------|----------|------------------------------------------------|
+| `lombok`        | managed | optional | Boilerplate reduction via annotations (@Getter, @Builder, etc.) |
+| `dotenv-java`   | 3.0.0   | compile  | Loads environment variables from `.env` files  |
+
+---
+
+## Test Dependencies
+
+| Artifact                       | Version (managed) | Scope | Description                                              |
+|--------------------------------|-------------------|-------|----------------------------------------------------------|
+| `spring-boot-starter-test`     | 3.4.3             | test  | Testing suite: JUnit 5, Mockito, AssertJ, Spring Test    |
+| `h2`                           | managed           | test  | In-memory H2 database for integration/unit tests        |
+
+---
+
+## Build Plugins
+
+| Plugin                          | Version    | Description                                               |
+|---------------------------------|------------|-----------------------------------------------------------|
+| `spring-boot-maven-plugin`      | 3.4.3      | Packages the app as an executable JAR; excludes Lombok    |
+| `maven-surefire-plugin`         | 3.2.5      | Runs unit tests during the Maven build lifecycle          |
+| `jacoco-maven-plugin`           | 0.8.12     | Code coverage instrumentation and reporting (min. 85% line coverage per package) |
+| `sonar-maven-plugin`            | 4.0.0.4121 | SonarQube static analysis integration                     |
+
+---
+
+## Coverage & Quality Configuration
+
+- **Minimum line coverage:** 85% per package (enforced by JaCoCo `check` goal)
+- **JaCoCo XML report path:** `target/site/jacoco/jacoco.xml`
+- **SonarQube exclusions:** `src/main/java/edu/eci/dosw/configurators/*`
+- **SonarQube project key:** `tech_cup`
+
+## Contributors
+
+- [Ángela Gómez](https://github.com/MissGomezzz)
+- [Paula Castañeda](https://github.com/Valentina-33)
+- [Tomas Olaya](https://github.com/iAxstral)
+- [Samuel Castelblanco](https://github.com/Queruubin)
+- [Diego Muñoz](https://github.com/0strezz)
