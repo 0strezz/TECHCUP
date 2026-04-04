@@ -96,3 +96,11 @@
 - **JaCoCo XML report path:** `target/site/jacoco/jacoco.xml`
 - **SonarQube exclusions:** `src/main/java/edu/eci/dosw/configurators/*`
 - **SonarQube project key:** `tech_cup`
+
+## Contributors
+
+- [Ángela Gómez](https://github.com/MissGomezzz)
+- [Paula Castañeda](https://github.com/Valentina-33)
+- [Tomas Olaya](https://github.com/iAxstral)
+- [Samuel Castelblanco](https://github.com/Queruubin)
+- [Diego Muñoz](https://github.com/0strezz)
