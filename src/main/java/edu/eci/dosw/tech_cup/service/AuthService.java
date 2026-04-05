@@ -5,6 +5,7 @@ import edu.eci.dosw.tech_cup.dto.LoginResponseDto;
 import edu.eci.dosw.tech_cup.dto.RefreshTokenRequestDto;
 import edu.eci.dosw.tech_cup.entity.auth.TokenEntity;
 import edu.eci.dosw.tech_cup.entity.auth.TokenType;
+import edu.eci.dosw.tech_cup.entity.user.RoleEntity;
 import edu.eci.dosw.tech_cup.entity.user.UserEntity;
 import edu.eci.dosw.tech_cup.repository.TokenRepository;
 import edu.eci.dosw.tech_cup.repository.UserRepository;
@@ -17,6 +18,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class AuthService {
@@ -139,10 +141,14 @@ public class AuthService {
         }
 
         log.debug("getMe successful for userId={}", user.getId());
-        return new LoginResponseDto(user.getId(), user.getName(), user.getEmail(), user.getRole(), "User details fetched successfully");
+        return new LoginResponseDto(
+                user.getId(),
+                user.getName(),
+                user.getEmail(),
+                extractRoleNames(user),
+                "User details fetched successfully"
+        );
     }
-
-    // --- Helper ---
 
     private LoginResponseDto loginError(String message) {
         return new LoginResponseDto(null, null, null, null, message);
@@ -153,13 +159,19 @@ public class AuthService {
                 user.getId(),
                 user.getName(),
                 user.getEmail(),
-                user.getRole(),
+                extractRoleNames(user),
                 accessToken,
                 refreshToken,
                 "Bearer",
                 jwtService.getAccessTokenExpirationSeconds(),
                 message
         );
+    }
+
+    private List<String> extractRoleNames(UserEntity user) {
+        return user.getRoles().stream()
+                .map(RoleEntity::getName)
+                .collect(Collectors.toList());
     }
 
     private void saveRefreshToken(UserEntity user, String refreshToken) {

@@ -1,5 +1,6 @@
 package edu.eci.dosw.tech_cup.service;
 
+import edu.eci.dosw.tech_cup.entity.user.RoleEntity;
 import edu.eci.dosw.tech_cup.entity.user.UserEntity;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -12,6 +13,8 @@ import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class JwtService {
@@ -29,9 +32,13 @@ public class JwtService {
         Instant now = Instant.now();
         Instant expiration = now.plus(accessTokenExpirationMinutes, ChronoUnit.MINUTES);
 
+        List<String> roleNames = user.getRoles().stream()
+                .map(RoleEntity::getName)
+                .collect(Collectors.toList());
+
         return Jwts.builder()
                 .subject(user.getEmail())
-                .claim("role", user.getRole())
+                .claim("roles", roleNames)
                 .claim("type", "access")
                 .issuedAt(Date.from(now))
                 .expiration(Date.from(expiration))

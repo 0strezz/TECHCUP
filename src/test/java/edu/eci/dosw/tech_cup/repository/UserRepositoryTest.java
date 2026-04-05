@@ -27,7 +27,6 @@ class UserRepositoryTest {
                 "Angela",
                 "angela@mail.com",
                 "123",
-                "ADMIN",
                 true,
                 LocalDateTime.now()
         );
@@ -44,7 +43,6 @@ class UserRepositoryTest {
                 "Angela",
                 "angela@mail.com",
                 "123",
-                "ADMIN",
                 true,
                 LocalDateTime.now()
         );
@@ -56,22 +54,25 @@ class UserRepositoryTest {
         assertTrue(result.isPresent());
     }
 
+    /*
     @Test
     @DisplayName("should find users by role")
     void shouldFindByRole() {
-        userRepository.save(new UserEntity("A", "a@mail.com", "123", "ADMIN", true, LocalDateTime.now()));
-        userRepository.save(new UserEntity("B", "b@mail.com", "123", "USER", true, LocalDateTime.now()));
+        userRepository.save(new UserEntity("A", "a@mail.com", "123", true, LocalDateTime.now()));
+        userRepository.save(new UserEntity("B", "b@mail.com", "123", true, LocalDateTime.now()));
 
         List<UserEntity> result = userRepository.findByRole("ADMIN");
 
         assertEquals(1, result.size());
     }
+     */
+    
 
     @Test
     @DisplayName("should find active users")
     void shouldFindByActive() {
-        userRepository.save(new UserEntity("A", "a@mail.com", "123", "ADMIN", true, LocalDateTime.now()));
-        userRepository.save(new UserEntity("B", "b@mail.com", "123", "USER", false, LocalDateTime.now()));
+        userRepository.save(new UserEntity("A", "a@mail.com", "123",  true, LocalDateTime.now()));
+        userRepository.save(new UserEntity("B", "b@mail.com", "123", false, LocalDateTime.now()));
 
         List<UserEntity> result = userRepository.findByActive(true);
 
@@ -85,7 +86,6 @@ class UserRepositoryTest {
                 "Angela",
                 "delete@mail.com",
                 "123",
-                "ADMIN",
                 true,
                 LocalDateTime.now()
         );

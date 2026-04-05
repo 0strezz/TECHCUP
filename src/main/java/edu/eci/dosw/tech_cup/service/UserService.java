@@ -4,7 +4,9 @@ import edu.eci.dosw.tech_cup.dto.ChangeUserRoleRequestDto;
 import edu.eci.dosw.tech_cup.dto.CreateUserRequestDto;
 import edu.eci.dosw.tech_cup.dto.UpdateUserRequestDto;
 import edu.eci.dosw.tech_cup.dto.UserResponseDto;
+import edu.eci.dosw.tech_cup.entity.user.RoleEntity;
 import edu.eci.dosw.tech_cup.entity.user.UserEntity;
+import edu.eci.dosw.tech_cup.repository.RoleRepository;
 import edu.eci.dosw.tech_cup.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,24 +24,32 @@ public class UserService {
     private static final Logger log = LoggerFactory.getLogger(UserService.class);
 
     private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
     public UserResponseDto createUser(CreateUserRequestDto request) {
         log.info("Creating user with email={}", request.getEmail());
 
+        Optional<RoleEntity> playerRoleOpt = roleRepository.findByName("PLAYER");
+        if (playerRoleOpt.isEmpty()) {
+            return errorUser("Default role PLAYER does not exist");
+        }
+
         UserEntity entity = new UserEntity(
                 request.getName(),
                 request.getEmail(),
-            passwordEncoder.encode(request.getPassword()),
-                "PLAYER",
+                passwordEncoder.encode(request.getPassword()),
                 true,
                 LocalDateTime.now()
         );
+
+        entity.getRoles().add(playerRoleOpt.get());
 
         UserEntity saved = userRepository.save(entity);
         log.debug("User created with id={}", saved.getId());
@@ -105,8 +115,11 @@ public class UserService {
         }
 
         UserEntity actingUser = actorOpt.get();
-        if (!"ADMINISTRATOR".equals(actingUser.getRole())) {
-            log.debug("Role change denied. actor role is {}", actingUser.getRole());
+        boolean isAdministrator = actingUser.getRoles().stream()
+                .anyMatch(role -> "ADMINISTRATOR".equals(role.getName()));
+
+        if (!isAdministrator) {
+            log.debug("Role change denied. actor is not administrator");
             return errorUser("Only an administrator can assign a different role");
         }
 
@@ -116,21 +129,31 @@ public class UserService {
             return errorUser("Target user not found");
         }
 
+        Optional<RoleEntity> newRoleOpt = roleRepository.findByName(request.getNewRole());
+        if (newRoleOpt.isEmpty()) {
+            log.debug("Role change failed. role does not exist: {}", request.getNewRole());
+            return errorUser("The requested role does not exist");
+        }
+
         UserEntity target = targetOpt.get();
-        target.setRole(request.getNewRole());
+        target.getRoles().clear();
+        target.getRoles().add(newRoleOpt.get());
+
         userRepository.save(target);
         log.info("Role changed successfully for user id={} to role={}", id, request.getNewRole());
         return toDto(target, "User role updated successfully");
     }
 
-    // --- Helpers ---
-
     private UserResponseDto toDto(UserEntity entity, String message) {
+        List<String> roles = entity.getRoles().stream()
+                .map(RoleEntity::getName)
+                .collect(Collectors.toList());
+
         return new UserResponseDto(
                 entity.getId(),
                 entity.getName(),
                 entity.getEmail(),
-                entity.getRole(),
+                roles,
                 entity.isActive(),
                 message
         );
