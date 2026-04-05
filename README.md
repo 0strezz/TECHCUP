@@ -100,7 +100,72 @@
 ## Contributors
 
 - [Ángela Gómez](https://github.com/MissGomezzz)
-- [Paula Castañeda](https://github.com/Valentina-33)
+- [Paula Lozano](https://github.com/Valentina-33)
 - [Tomas Olaya](https://github.com/iAxstral)
 - [Samuel Castelblanco](https://github.com/Queruubin)
 - [Diego Muñoz](https://github.com/0strezz)
+
+
+## Running API in Visual Studio Code PowerShell
+To verify the correct use of the created end points, we followed the next steps:
+
+### Enviroment variables
+
+```powershell
+$env:DB_URL="jdbc:postgresql://localhost:5432/name_database_postgre"
+
+$env:DB_USERNAME="postgres"
+
+$env:DB_PASSWORD="your_password"
+
+$env:JWT_SECRET="a-long-and-secure-password-for-jwt-123456789"
+``` 
+
+### Run the app
+./mvnw spring-boot:run
+
+After succesfully running we proved the end points: 
+
+- **Registration of a user:**
+
+```powershell
+Invoke-RestMethod -Method POST -Uri "http://localhost:8080/api/users" `
+  -ContentType "application/json" `
+  -Body '{"name":"Name","email":"name@techcup.com","password":"password"}' | ConvertTo-Json -Depth 5
+```
+
+![registration](docs/images/lab-9-api-users.png)
+
+- **User's login**
+
+```powershell
+$response = Invoke-RestMethod -Method POST -Uri "http://localhost:8080/api/auth/login" `
+  -ContentType "application/json" `
+  -Body '{"email":"name@techcup.com","password":"123456"}'
+
+$response | ConvertTo-Json -Depth 5
+```
+
+
+
+ ![login](docs/images/lab-9-api-login.png)
+
+- **Get user's authetication**
+
+```powershell
+$response.accessToken | Set-Clipboard
+
+$headers = @{ Authorization = "Bearer $($response.accessToken)" }
+
+Invoke-RestMethod -Method POST -Uri "http://localhost:8080/api/auth/me" `
+  -Headers $headers | ConvertTo-Json -Depth 5
+```
+
+
+![me](docs/images/lab-9-api-auth-me.png)
+
+---
+
+We can make other some other requests:
+
+![another_request](docs/images/lab-9-post-api-users.png)
