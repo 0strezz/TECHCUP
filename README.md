@@ -57,9 +57,9 @@
 
 | Artifact         | Version | Scope   | Description                              |
 |------------------|---------|---------|------------------------------------------|
-| `jjwt-api`       | 0.12.6  | compile | JJWT public API for creating/parsing JWTs |
-| `jjwt-impl`      | 0.12.6  | runtime | JJWT implementation (runtime only)       |
-| `jjwt-jackson`   | 0.12.6  | runtime | Jackson-based JSON serialization for JJWT |
+| `jjwt-api`       | 0.13.0  | compile | JJWT public API for creating/parsing JWTs |
+| `jjwt-impl`      | 0.13.0  | runtime | JJWT implementation (runtime only)       |
+| `jjwt-jackson`   | 0.13.0  | runtime | Jackson-based JSON serialization for JJWT |
 
 ### Utilities
 

@@ -12,6 +12,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -142,6 +144,25 @@ public class UserService {
         userRepository.save(target);
         log.info("Role changed successfully for user id={} to role={}", id, request.getNewRole());
         return toDto(target, "User role updated successfully");
+    }
+
+    public UserDetails loadUserByEmail(String email) {
+        Optional<UserEntity> userOpt = userRepository.findByEmail(email);
+
+        if (userOpt.isEmpty()) {
+            throw new RuntimeException("User not found with email: " + email);
+        }
+
+        UserEntity user = userOpt.get();
+
+        return new org.springframework.security.core.userdetails.User(
+                user.getEmail(),
+                user.getPassword(),
+                user.getRoles().stream()
+                        .flatMap(role -> role.getPermissions().stream())
+                        .map(permission -> new SimpleGrantedAuthority(permission.getName()))
+                        .toList()
+        );
     }
 
     private UserResponseDto toDto(UserEntity entity, String message) {

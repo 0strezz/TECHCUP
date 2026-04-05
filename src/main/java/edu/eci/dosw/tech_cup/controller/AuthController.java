@@ -23,7 +23,8 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-    @PostMapping("/me")
+    // Changed to Get instead of Post
+    @GetMapping("/me")
     public ResponseEntity<LoginResponseDto> getMe(@RequestHeader("Authorization") String token) {
         LoginResponseDto response = authService.getMe(token);
 
