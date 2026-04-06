@@ -29,7 +29,7 @@ class TournamentRepositoryTest {
     @DisplayName("should save tournament with organizer")
     void shouldSaveTournament() {
         UserEntity user = userRepository.save(
-                new UserEntity("Angela", "angela@mail.com", "123", "ADMIN", true, LocalDateTime.now())
+                new UserEntity("Angela", "angela@mail.com", "123", true, LocalDateTime.now())
         );
 
         TournamentEntity tournament = new TournamentEntity(
@@ -51,7 +51,7 @@ class TournamentRepositoryTest {
     @DisplayName("should find by status")
     void shouldFindByStatus() {
         UserEntity user = userRepository.save(
-                new UserEntity("Angela", "angela@mail.com", "123", "ADMIN", true, LocalDateTime.now())
+                new UserEntity("Angela", "angela@mail.com", "123", true, LocalDateTime.now())
         );
 
         tournamentRepository.save(new TournamentEntity(
@@ -71,7 +71,7 @@ class TournamentRepositoryTest {
     @DisplayName("should find by organizer id")
     void shouldFindByOrganizerId() {
         UserEntity user = userRepository.save(
-                new UserEntity("Angela", "angela@mail.com", "123", "ADMIN", true, LocalDateTime.now())
+                new UserEntity("Angela", "angela@mail.com", "123", true, LocalDateTime.now())
         );
 
         tournamentRepository.save(new TournamentEntity(
@@ -87,7 +87,7 @@ class TournamentRepositoryTest {
     @DisplayName("should find by name containing")
     void shouldFindByName() {
         UserEntity user = userRepository.save(
-                new UserEntity("Angela", "angela@mail.com", "123", "ADMIN", true, LocalDateTime.now())
+                new UserEntity("Angela", "angela@mail.com", "123", true, LocalDateTime.now())
         );
 
         tournamentRepository.save(new TournamentEntity(
@@ -103,7 +103,7 @@ class TournamentRepositoryTest {
     @DisplayName("should delete tournament")
     void shouldDeleteTournament() {
         UserEntity user = userRepository.save(
-                new UserEntity("Angela", "angela@mail.com", "123", "ADMIN", true, LocalDateTime.now())
+                new UserEntity("Angela", "angela@mail.com", "123", true, LocalDateTime.now())
         );
 
         TournamentEntity tournament = tournamentRepository.save(new TournamentEntity(

@@ -27,8 +27,15 @@ public class UserEntity {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "role", nullable = false)
-    private String role;
+    // Main change, role has a relation ManyToMany 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "user_roles",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private List<RoleEntity> roles = new ArrayList<>();
+
 
     @Column(name = "active", nullable = false)
     private boolean active;
@@ -45,11 +52,10 @@ public class UserEntity {
     public UserEntity() {
     }
 
-    public UserEntity(String name, String email, String password, String role, boolean active, LocalDateTime createdAt) {
+    public UserEntity(String name, String email, String password, boolean active, LocalDateTime createdAt) {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.role = role;
         this.active = active;
         this.createdAt = createdAt;
     }
@@ -66,8 +72,8 @@ public class UserEntity {
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
 
-    public String getRole() { return role; }
-    public void setRole(String role) { this.role = role; }
+    public List<RoleEntity> getRoles() {return roles;}
+    public void setRoles(List<RoleEntity> roles) {this.roles = roles;}
 
     public boolean isActive() { return active; }
     public void setActive(boolean active) { this.active = active; }
