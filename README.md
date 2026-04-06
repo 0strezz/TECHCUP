@@ -132,7 +132,7 @@ $env:JWT_SECRET="a-long-and-secure-password-for-jwt-123456789"
 ```
 
 
-After succesfully running we proved the end points: 
+After succesfully running we proved the endpoints: 
 
 <br>
 
