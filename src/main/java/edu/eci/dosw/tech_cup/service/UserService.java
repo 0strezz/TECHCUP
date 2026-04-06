@@ -39,6 +39,8 @@ public class UserService {
         log.info("Creating user with email={}", request.getEmail());
 
         Optional<RoleEntity> playerRoleOpt = roleRepository.findByName("PLAYER");
+        Optional<RoleEntity> adminRoleOpt = roleRepository.findByName("ADMINISTRATOR");
+
         if (playerRoleOpt.isEmpty()) {
             return errorUser("Default role PLAYER does not exist");
         }
@@ -51,7 +53,11 @@ public class UserService {
                 LocalDateTime.now()
         );
 
-        entity.getRoles().add(playerRoleOpt.get());
+        if ("admin@techcup.com".equalsIgnoreCase(request.getEmail()) && adminRoleOpt.isPresent()) {
+            entity.getRoles().add(adminRoleOpt.get());
+        } else {
+            entity.getRoles().add(playerRoleOpt.get());
+        }
 
         UserEntity saved = userRepository.save(entity);
         log.debug("User created with id={}", saved.getId());

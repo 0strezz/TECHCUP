@@ -8,6 +8,7 @@ import edu.eci.dosw.tech_cup.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 import java.util.UUID;
@@ -23,7 +24,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserResponseDto> createUser(@RequestBody CreateUserRequestDto request) {
+    public ResponseEntity<UserResponseDto> createUser(@Valid @RequestBody CreateUserRequestDto request) {
         UserResponseDto response = userService.createUser(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
@@ -48,7 +49,7 @@ public class UserController {
     @PutMapping("/{id}")
     public ResponseEntity<UserResponseDto> updateUser(
             @PathVariable UUID id,
-            @RequestBody UpdateUserRequestDto request) {
+            @Valid @RequestBody UpdateUserRequestDto request) {
 
         UserResponseDto updatedUser = userService.updateUser(id, request);
 
@@ -73,7 +74,7 @@ public class UserController {
     @PatchMapping("/{id}/role")
     public ResponseEntity<UserResponseDto> changeUserRole(
             @PathVariable UUID id,
-            @RequestBody ChangeUserRoleRequestDto request) {
+            @Valid @RequestBody ChangeUserRoleRequestDto request) {
 
         UserResponseDto user = userService.changeUserRole(id, request);
 

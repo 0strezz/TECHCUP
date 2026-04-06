@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 import java.util.UUID;
@@ -35,7 +36,7 @@ public class TournamentController {
             @ApiResponse(responseCode = "201", description = "Tournament created successfully"),
             @ApiResponse(responseCode = "400", description = "Invalid request")
     })
-    public ResponseEntity<TournamentResponseDto> createTournament(@RequestBody CreateTournamentRequestDto request) {
+    public ResponseEntity<TournamentResponseDto> createTournament(@Valid @RequestBody CreateTournamentRequestDto request) {
         TournamentResponseDto response = tournamentService.createTournament(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
@@ -84,7 +85,7 @@ public class TournamentController {
     })
     public ResponseEntity<TournamentResponseDto> updateTournament(
             @PathVariable UUID id,
-            @RequestBody UpdateTournamentRequestDto request) {
+            @Valid @RequestBody UpdateTournamentRequestDto request) {
 
         TournamentResponseDto tournament = tournamentService.updateTournament(id, request);
 
