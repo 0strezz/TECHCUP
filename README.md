@@ -111,7 +111,7 @@
 
 
 ## Running API in Visual Studio Code PowerShell
-To verify the correct use of the created end points, we followed the next steps:
+To verify the correct use of the created endpoints, we followed the next steps:
 
 ### Enviroment variables
 
