@@ -103,43 +103,34 @@ public class AuthService {
         return buildAuthResponse(user, newAccessToken, newRefreshToken, "Token refreshed successfully");
     }
 
-    public LoginResponseDto getMe(String tokenValue) {
-        log.info("getMe requested. tokenPresent={}", tokenValue != null && !tokenValue.isEmpty());
+    public LoginResponseDto getMe(String email) {
+        log.info("getMe requested for email={}", email);
 
-        if (tokenValue == null || tokenValue.isEmpty()) {
-            log.debug("Rejected getMe request due to missing token");
-            return loginError("Invalid token");
-        }
-
-        String cleanToken = tokenValue.startsWith("Bearer ") ? tokenValue.substring(7) : tokenValue;
-        String email;
-        try {
-            email = jwtService.extractSubject(cleanToken);
-        } catch (Exception e) {
-            return loginError("Invalid token");
+        if (email == null || email.isBlank()) {
+            log.debug("Rejected getMe request due to missing authenticated email");
+            return loginError("Invalid authenticated user");
         }
 
         Optional<UserEntity> opt = userRepository.findByEmail(email);
         if (opt.isEmpty()) {
-            log.debug("Rejected getMe request. user not found for token subject");
-            return loginError("Invalid token");
+            log.debug("Rejected getMe request. user not found for email={}", email);
+            return loginError("User not found");
         }
 
         UserEntity user = opt.get();
         if (!user.isActive()) {
+            log.debug("Rejected getMe request. inactive userId={}", user.getId());
             return loginError("User account is inactive");
         }
 
-        try {
-            if (!jwtService.isAccessTokenValid(cleanToken, user)) {
-                return loginError("Invalid token");
-            }
-        } catch (Exception e) {
-            return loginError("Invalid token");
-        }
-
         log.debug("getMe successful for userId={}", user.getId());
-        return new LoginResponseDto(user.getId(), user.getName(), user.getEmail(), user.getRole(), "User details fetched successfully");
+        return new LoginResponseDto(
+                user.getId(),
+                user.getName(),
+                user.getEmail(),
+                user.getRole(),
+                "User details fetched successfully"
+        );
     }
 
     // --- Helper ---
