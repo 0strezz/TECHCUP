@@ -201,3 +201,8 @@ org.postgresql.util.PSQLException: ERROR: llave duplicada viola restricción de 
 2026-04-20T15:54:57.115-05:00  INFO 29160 --- [http-nio-8080-exec-5] e.eci.dosw.tech_cup.service.AuthService  : Login attempt for email=valentina@gmail.com
 2026-04-20T15:54:57.213-05:00  INFO 29160 --- [http-nio-8080-exec-5] e.eci.dosw.tech_cup.service.AuthService  : Login successful for email=valentina@gmail.com
 2026-04-20T15:55:57.957-05:00  INFO 29160 --- [http-nio-8080-exec-7] e.eci.dosw.tech_cup.service.AuthService  : getMe requested for email=valentina@gmail.com
+2026-04-20T16:01:25.538-05:00  INFO 29160 --- [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-20T16:01:25.548-05:00  INFO 29160 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-04-20T16:01:25.556-05:00  INFO 29160 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-20T16:01:25.559-05:00  INFO 29160 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-04-20T16:01:25.573-05:00  INFO 29160 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
